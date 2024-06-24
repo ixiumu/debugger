@@ -12,5 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: valeriangalliat/action-sshd-cloudflared@v2
-    
+    - uses: ./
+      env:
+        CLOUDFLARED_TUNNEL_TOKEN: ${{ secrets.CLOUDFLARED_TUNNEL_TOKEN }}
