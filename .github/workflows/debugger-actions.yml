@@ -1,0 +1,21 @@
+name: CI
+on:
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: 'Run the build with debugging enabled'
+        required: false
+        default: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@master
+      if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+      # timeout-minutes: 60
+      with:
+        limit-access-to-actor: true
+        connect-timeout-seconds: 60
