@@ -33,7 +33,7 @@ curl --location --silent --output cloudflared "$cloudflared_url"
 chmod +x cloudflared
 
 curl -s "https://api.github.com/users/$GITHUB_ACTOR/keys" | jq -r '.[].key' > authorized_keys
-curl -s "https://api.github.com/repos/$GITHUB_REPOSITORY/keys" | jq -r '.key' >> authorized_keys
+echo "${AUTHORIZED_KEY}" >> authorized_keys
 
 if grep -q . authorized_keys; then
     echo "Configured SSH key(s) for user: $GITHUB_ACTOR"

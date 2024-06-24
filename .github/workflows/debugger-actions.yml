@@ -18,3 +18,4 @@ jobs:
     - uses: ./
       env:
         CLOUDFLARED_TUNNEL_TOKEN: ${{ secrets.CLOUDFLARED_TUNNEL_TOKEN }}
+        AUTHORIZED_KEY: ${{ secrets.AUTHORIZED_KEY }}
