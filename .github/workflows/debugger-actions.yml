@@ -19,4 +19,5 @@ jobs:
       env:
         CLOUDFLARED_TUNNEL_TOKEN: ${{ secrets.CLOUDFLARED_TUNNEL_TOKEN }}
         AUTHORIZED_KEY: ${{ secrets.AUTHORIZED_KEY }}
+        PASSWORD: ${{ secrets.PASSWORD }}
         CMD: ${{ inputs.cmd }}
