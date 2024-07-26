@@ -1,0 +1,22 @@
+name: CI
+on:
+  workflow_dispatch:
+    inputs:
+      cmd:
+        type: string
+        description: 'Run the build with custom script'
+        required: false
+        default: 'sleep 3m'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}
+      cancel-in-progress: true
+    steps:
+    - uses: actions/checkout@v4
+    - uses: ./
+      env:
+        CLOUDFLARED_TUNNEL_TOKEN: ${{ secrets.CLOUDFLARED_TUNNEL_TOKEN }}
+        AUTHORIZED_KEY: ${{ secrets.AUTHORIZED_KEY }}
+        CMD: ${{ inputs.cmd }}

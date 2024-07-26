@@ -1,0 +1,7 @@
+name: Debug
+description: Run the build with custom script
+runs:
+  using: composite
+  steps:
+    - run: $GITHUB_ACTION_PATH/.github/script/entrypoint.sh
+      shell: bash
